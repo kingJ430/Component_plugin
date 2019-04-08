@@ -50,17 +50,17 @@ repositories {
 //此处是为了将发布的代码逻辑封装到upload.gradle脚步中去了，这样build.gradle更简洁，代码维护性更高
 //apply from : 'upload.gradle'
 
-//group = 'com.common.component'
-//version = '1.0.2'
-//
-//uploadArchives {
-//    repositories {
-//        mavenDeployer {
-//            //提交到远程服务器：
+group = 'com.common.component'
+version = '1.0.2'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
 //            repository(url: "http://192.168.202.102:8080/nexus/content/repositories/releases/") {
 //                authentication(userName: "admin", password: "admin123")
 //            }
-////            repository(url: uri('../repo'))
-//        }
-//    }
-//}
+            repository(url: uri('../repo'))
+        }
+    }
+}
