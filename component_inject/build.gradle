@@ -1,5 +1,7 @@
 apply plugin: 'groovy'
-apply plugin: 'maven'
+//apply plugin: 'maven'
+apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
 
 dependencies {
     compile 'com.android.tools.build:gradle:2.3.3'
@@ -14,17 +16,51 @@ repositories {
     mavenCentral()
 }
 
-group = 'com.common.component'
-version = '1.0.2'
+//2、自定义一些属性，这些属性在upload.gradle都会使用到
+//ext {
+//
+//    //发布到bintray上仓库名，执行上传前必须手动创建同名到仓库，否则上传会失败
+//    bintrayRepo = 'Component_plugin'
+//    bintrayName = 'component'
+//
+//    //群组id
+//    publishedGroupId = 'com.common.component'
+//    //发布成库的名称
+//    libraryName = 'component'
+//    //最好和libraryName保持一致
+//    artifact = 'component'
+//
+//    //库描述
+//    libraryDescription = 'a component library for zjf'
+//
+//    siteUrl = 'https://github.com/kingJ430/Component_plugin'
+//    gitUrl = 'https://github.com/kingJ430/Component_plugin.git'
+//
+//    libraryVersion = '1.0.0'
+//
+//    developerId = 'developer id'
+//    developerName = 'your name'
+//    developerEmail = 'xxxx@163.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            //提交到远程服务器：
-            repository(url: "http://192.168.202.102:8080/nexus/content/repositories/releases/") {
-                authentication(userName: "admin", password: "admin123")
-            }
-//            repository(url: uri('../repo'))
-        }
-    }
-}
+//此处是为了将发布的代码逻辑封装到upload.gradle脚步中去了，这样build.gradle更简洁，代码维护性更高
+//apply from : 'upload.gradle'
+
+//group = 'com.common.component'
+//version = '1.0.2'
+//
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            //提交到远程服务器：
+//            repository(url: "http://192.168.202.102:8080/nexus/content/repositories/releases/") {
+//                authentication(userName: "admin", password: "admin123")
+//            }
+////            repository(url: uri('../repo'))
+//        }
+//    }
+//}
